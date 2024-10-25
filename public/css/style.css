@@ -1,0 +1,123 @@
+body {
+    background-color: white;
+    height: 100vh;
+    width: 100%;
+    font-family: "Open Sans", sans-serif;
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.nav-item a {
+    font-size: 1.4vw;
+    color: black;
+    font-weight: 500;
+    margin: 0vw 2vw;
+}
+.nav-item .badge{
+    font-size:1.2vw;
+}
+.log{
+    font-weight:700 !important;
+}
+.navbar-brand {
+    font-size: 2vw;
+    margin-left: 1vw;
+    color: red;
+}
+
+#footer {
+    background-color: #F8F9FA;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#f,
+#f_brand {
+    font-size: 1.3vw;
+    /* line-height: 3vw; */
+}
+
+#footer #f i {
+    margin: .5vw 1vw;
+}
+
+#f_content {
+    margin-bottom: 1vw;
+}
+
+#f_content a {
+    color: black;
+    text-decoration: none;
+    font-size: 1.3vw;
+    margin: 0vw 1vw;
+}
+
+#f_content a:hover {
+    text-decoration: underline;
+}
+
+.card {
+    width: 20%;
+    border: none;
+}
+.review_card{
+    border:1px solid black;
+    border-radius:10px;
+}
+
+.card img {
+    width: 100% !important;
+    object-fit: cover;
+    border-radius: 1rem;
+}
+
+.row .card {
+    width: 100% !important;
+}
+
+.row a {
+    color: black;
+    text-decoration: none;
+}
+
+.card-img-overlay {
+    opacity: 0;
+}
+
+.card-img-overlay:hover {
+    opacity: 0.1;
+    background-color: white;
+}
+
+form {
+    color: black;
+    font-weight: 600;
+}
+
+.btn {
+    background-color: #E31C5F;
+}
+
+.btns {
+    display: flex;
+}
+
+.btns a {
+    margin-right: 1vw;
+}
+
+.container {
+    flex: 1;
+}
+
+.show-image {
+    height: 40vh;
+}
+
+.index {
+    margin-top: 2vw;
+}

@@ -1,0 +1,105 @@
+<% layout("/layouts/boilerplate")%>
+
+    <body>
+        <div class="row mt-3 mb-3">
+            <div class="col-8 offset-2">
+                <h1 class="mb-3">
+                    <%=iddata.title%>
+                </h1>
+                <div class="card">
+                    <img src="<%=iddata.image.url%>" class="card-img-top show-image" alt="image">
+                    <div class="card-body">
+                    </div>
+                    <ul>
+                        <li>
+                            Owned By <%=iddata.owner.username%>
+                        </li>
+                        <li>
+                            <%=iddata.description%>
+                        </li>
+                        <li>&#8377;<%=iddata.price.toLocaleString("en-IN")%></li>
+                        <li>
+                            <%=iddata.location%>
+                        </li>
+                        <li>
+                            <%=iddata.country%>
+                        </li>
+                    </ul>
+                    <%if(CurrUser &&iddata.owner._id.equals(CurrUser._id)){%>
+                        <div class="btns">
+                            <a href="/listings/<%=iddata.id%>/edit" class="btn btn-dark " style="color:white">Edit this
+                                listings</a>
+                            <form method="post" action="/listings/<%=iddata.id%>?_method=delete">
+                                <button class="btn btn-dark">Delete</button>
+                            </form>
+                        </div>
+                        <%}%>
+                            <div class="mb-3 mt-3">
+                                <%if(CurrUser){%>
+                                    <hr>
+                                    <h4>Leave a Review:</h4>
+                                    <form method="post" action="/listings/<%=iddata.id%>/reviews" novalidate
+                                        class="needs-validation">
+                                        <div>
+                                            <label for="rating" class="form-label">Rating:</label>
+                                            <fieldset class="starability-slot">
+                                                <input type="radio" id="no-rate" class="input-no-rate"
+                                                    name="review[rating]" value="1" checked aria-label="No rating." />
+                                                <input type="radio" id="first-rate1" name="review[rating]" value="1" />
+                                                <label for="first-rate1" title="Terrible">1 star</label>
+                                                <input type="radio" id="first-rate2" name="review[rating]" value="2" />
+                                                <label for="first-rate2" title="Not good">2 stars</label>
+                                                <input type="radio" id="first-rate3" name="review[rating]" value="3" />
+                                                <label for="first-rate3" title="Average">3 stars</label>
+                                                <input type="radio" id="first-rate4" name="review[rating]" value="4" />
+                                                <label for="first-rate4" title="Very good">4 stars</label>
+                                                <input type="radio" id="first-rate5" name="review[rating]" value="5" />
+                                                <label for="first-rate5" title="Amazing">5 stars</label>
+                                            </fieldset>
+                                            <label for="comment" class="form-label">Comment:</label>
+                                            <textarea name="review[comment]" id="comment" rows="5" class="form-control"
+                                                required></textarea>
+                                            <div class="invalid-feedback">
+                                                Pls add some comment for review.
+                                            </div>
+                                            <button class="btn btn-outline-light mt-3">Submit</button>
+
+                                        </div>
+                                    </form>
+                                    <%}%>
+                            </div>
+                            <hr>
+                            <h4>All Reviews:</h4>
+                            <div class="row">
+                                <%for(review of iddata.reviews){%>
+                                    <div class="col-5 ms-3 mb-3 review_card">
+                                        <div class="card-body">
+                                            <h5 class="card-title">
+                                                <%=review.author.username%>
+                                            </h5>
+                                            <p class="card-text">
+                                            <p class="starability-result card-text" data-rating="<%=review.rating%>">
+                                            </p>
+                                            </p>
+                                            <p class="card-text">
+                                                <%=review.comment%>
+                                            </p>
+                                        </div>
+                                        <div class="card-text ms-3">
+                                            <form method="post"
+                                                action="/listings/<%=iddata.id%>/reviews/<%=review.id%>?_method=delete">
+                                                <button class="btn btn-sm mb-3 btn-dark">Delete!</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                    <%}%>
+
+                            </div>
+
+                </div>
+            </div>
+        </div>
+
+
+
+    </body>
