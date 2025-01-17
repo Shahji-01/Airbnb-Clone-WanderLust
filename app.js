@@ -24,23 +24,23 @@ const User = require("./models/users.js");
 const { serialize } = require("v8");
 const list = require("./models/listening.js");
 
-const MongoDb_url = "mongodb://127.0.0.1:27017/WanderLust";
-// const DbUrl=process.env.ATLASDB_URL;
+// const MongoDb_url = "mongodb://127.0.0.1:27017/WanderLust";
+const DbUrl=process.env.ATLASDB_URL;
 
-// const store=MongoStore.create({
-//     mongoUrl:DbUrl,
-//     crypto:{
-//          secret: process.env.SECRET,
-//     },
-//     touchAfter:24*3600,
-// });
+const store=MongoStore.create({
+    mongoUrl:DbUrl,
+    crypto:{
+         secret: process.env.SECRET,
+    },
+    touchAfter:24*3600,
+});
 
-// store.on("error",()=>{
-//     console.log("Error in mongostore.",err);
-// })
+store.on("error",()=>{
+    console.log("Error in mongostore.",err);
+})
 
 const sessionOption = {
-  // store,
+  store,
   secret: process.env.SECRET,
   resave: false,
   saveUninitialized: true,

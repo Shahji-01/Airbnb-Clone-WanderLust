@@ -21,11 +21,11 @@ async function main() {
 // };
 const initdata = () => {
   list.deleteMany({}).then((res) => {
-    console.log(res);
+    // console.log(res);
   });
   Reqdata = Reqdata.map((obj) => ({ ...obj, owner: "67139ecccc061cfe9561e5f0" }));
   list.insertMany(Reqdata).then((res) => {
-    console.log(res);
+    // console.log(res);
   });
   console.log("data is saved");
 }

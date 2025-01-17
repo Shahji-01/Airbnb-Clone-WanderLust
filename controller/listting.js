@@ -112,7 +112,7 @@ module.exports.upadateListing = async (req, res) => {
     updatedata.image = { url, filename };
     await updatedata.save();
   }
-  console.log(updatedata);
+  // console.log(updatedata);
   req.flash("success", "Listings is Updated!");
   res.redirect(`/listings/${id}`);
 };
