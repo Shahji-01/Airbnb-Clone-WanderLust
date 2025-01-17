@@ -2,7 +2,7 @@
 
     <body>
         <div class="row mt-3 mb-3">
-            <div class="col-8 offset-2">
+            <div class="col-10 offset-1">
                 <h1 class="mb-3">
                     <%=iddata.title%>
                 </h1>
@@ -10,21 +10,96 @@
                     <img src="<%=iddata.image.url%>" class="card-img-top show-image" alt="image">
                     <div class="card-body">
                     </div>
-                    <ul>
-                        <li>
-                            Owned By <%=iddata.owner.username%>
-                        </li>
-                        <li>
-                            <%=iddata.description%>
-                        </li>
-                        <li>&#8377;<%=iddata.price.toLocaleString("en-IN")%></li>
-                        <li>
-                            <%=iddata.location%>
-                        </li>
-                        <li>
-                            <%=iddata.country%>
-                        </li>
-                    </ul>
+                  
+                    <div class="listing-container">
+                        <!-- Left Section -->
+                        <div class="left-section">
+                            <div class="header">Entire rental unit in <%=iddata.location%>, <%=iddata.country%></div>
+                            <div class="ratings">
+                                <span>🌟 Guest favourite</span>
+                                <span>|</span>
+                                <span><%=iddata.reviews[0]? iddata.reviews[0].rating :""%></span>
+                                <span class="starability-result card-text" data-rating="<%=iddata.reviews[0]? iddata.reviews[0].rating : ""%>"></span>
+                                <span>|</span>
+                                <span><%=iddata.reviews.length%> Reviews</span>
+                            </div>
+                
+                            <div class="hosted-by">
+                                <strong>Hosted by <%=iddata.owner.username%></strong>
+                                <p>Superhost · 1 year hosting</p>
+                            </div>
+                
+                            <div class="features">
+                                <div class="feature">
+                                    <i class="fa-regular fa-snowflake"></i>
+                                    <p>Designed for staying cool</p>
+                                </div>
+                                <div class="feature">
+                                    <i class="fa-solid fa-face-smile"></i>
+                                    <p>Outdoor entertainment</p>
+                                </div>
+                                <div class="feature">
+                                    <i class="fa-solid fa-xmark"></i>
+                                    <p>Free cancellation before 25 Jan</p>
+                                </div>
+                            </div>
+                
+                            <div class="description">
+                               <%=iddata.description%>🌄✨
+                            </div>
+                
+                            <div class="show-more">Show more...</div>
+                        </div>
+                
+                        <!-- Right Section -->
+                        <div class="right-section">
+                            <div class="booking-container">
+                                <div class="booking-header">₹<%=iddata.price.toLocaleString("en-IN")%> <span style="font-size: 16px; font-weight: normal;">night</span></div>
+                
+                                <div class="input-group">
+                                    <label class="input-label" for="check-in">Check-in</label>
+                                    <input class="input-field" type="date" id="check-in" value="2025-01-20">
+                                </div>
+                
+                                <div class="input-group">
+                                    <label class="input-label" for="check-out">Check-out</label>
+                                    <input class="input-field" type="date" id="check-out" value="2025-01-25">
+                                </div>
+                
+                                <div class="input-group">
+                                    <label class="input-label" for="guests">Guests</label>
+                                    <select class="input-field" id="guests">
+                                        <option>1 guest</option>
+                                        <option>2 guests</option>
+                                        <option>3 guests</option>
+                                        <option>4 guests</option>
+                                    </select>
+                                </div>
+                
+                                <div class="rates">
+                                    <div class="rate-option">
+                                        <input type="radio" name="rate" id="non-refundable" checked>
+                                        <label for="non-refundable">
+                                            <strong>Non-refundable</strong> - ₹<%=iddata.price.toLocaleString("en-IN")%> total
+                                        </label>
+                                    </div>
+                
+                                    <div class="rate-option">
+                                        <input type="radio" name="rate" id="refundable">
+                                        <label for="refundable">
+                                            <strong>Refundable</strong> - ₹<%=(iddata.price+500).toLocaleString("en-IN")%> total
+                                            <div class="rate-description">Free cancellation before 3:00 pm on 19 Jan. Cancel before check-in on 20 Jan for a partial refund.</div>
+                                        </label>
+                                    </div>
+                                </div>
+                
+                                <button class="reserve-button" onclick="alert('Implement as per need,')">Reserve</button>
+                
+                                <div class="note">You won't be charged yet</div>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
                     <%if(CurrUser &&iddata.owner._id.equals(CurrUser._id)){%>
                         <div class="btns">
                             <a href="/listings/<%=iddata.id%>/edit" class="btn btn-dark " style="color:white">Edit this
@@ -68,35 +143,61 @@
                                     </form>
                                     <%}%>
                             </div>
-                            <hr>
+                            
+                            <hr> 
                             <h4>All Reviews:</h4>
-                            <div class="row">
-                                <%for(review of iddata.reviews){%>
-                                    <div class="col-5 ms-3 mb-3 review_card">
-                                        <div class="card-body">
-                                            <h5 class="card-title">
-                                                <%=review.author.username%>
-                                            </h5>
-                                            <p class="card-text">
-                                            <p class="starability-result card-text" data-rating="<%=review.rating%>">
-                                            </p>
-                                            </p>
-                                            <p class="card-text">
-                                                <%=review.comment%>
-                                            </p>
-                                        </div>
-                                        <div class="card-text ms-3">
-                                            <form method="post"
-                                                action="/listings/<%=iddata.id%>/reviews/<%=review.id%>?_method=delete">
-                                                <button class="btn btn-sm mb-3 btn-dark">Delete!</button>
-                                            </form>
-                                        </div>
-                                    </div>
-                                    <%}%>
-
-                            </div>
-
+                        
+        <div class="rating-summary">
+            <div class="rating-score">5.0</div>
+            <div class="rating-title">Guest favourite</div>
+            <div class="rating-description">One of the most loved homes on Airbnb based on ratings, reviews and reliability</div>
+            <div class="rating-categories">
+                <div class="rating-category">
+                    <strong>Cleanliness</strong>
+                    <span>5.0</span>
                 </div>
+                <div class="rating-category">
+                    <strong>Accuracy</strong>
+                    <span>4.9</span>
+                </div>
+                <div class="rating-category">
+                    <strong>Check-in</strong>
+                    <span>5.0</span>
+                </div>
+                <div class="rating-category">
+                    <strong>Communication</strong>
+                    <span>5.0</span>
+                </div>
+                <div class="rating-category">
+                    <strong>Location</strong>
+                    <span>5.0</span>
+                </div>
+                <div class="rating-category">
+                    <strong>Value</strong>
+                    <span>4.9</span>
+                </div>
+            </div>
+        </div>
+        <div class="reviews-list">
+        <%for(review of iddata.reviews){%>
+            <div class="review">
+                <div class="review-avatar"><img src="https://plus.unsplash.com/premium_photo-1682124752476-40db22034a58?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OXx8YW5pbWV8ZW58MHx8MHx8fDA%3D"></div>
+                <div class="review-content">
+                    <div class="review-header">
+                        <div class="review-name"> <%=review.author.username%>&nbsp;&nbsp;&nbsp;&nbsp;<span class="starability-result card-text"  data-rating="<%=iddata.reviews[0]? review.rating: ""%>"></span></div>
+                        <div class="review-meta">8 years on Airbnb · 2 weeks ago</div>
+                        
+                       
+                    </div>
+                    <div class="review-body">
+                        <%=review.comment%>
+                    </div>
+                </div>
+            </div>
+
+           
+   <%}%>
+            </div><br>
             </div>
         </div>
 
