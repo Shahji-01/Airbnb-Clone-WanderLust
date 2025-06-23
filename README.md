@@ -43,58 +43,58 @@ Check out the running app here:
 
 1. Clone the repo
 
-   ```bash
-   git clone https://github.com/Shahji-01/Airbnb-Clone-WanderLust.git
-   cd Airbnb-Clone-WanderLust
+      ```bash
+      git clone https://github.com/Shahji-01/Airbnb-Clone-WanderLust.git
+      cd Airbnb-Clone-WanderLust
 
 2. Install dependencies
 
-  bash
-  npm install
+     npm install
 
 3. Setup environment
 
 Create a .env file:
-  env
-  PORT=3000
-  MONGO_URL=<Your MongoDB connection string>
-  SESSION_SECRET=<Your session secret string>
-  CLOUD_NAME=<Your Cloudinary cloud name>
-  CLOUD_API_KEY=<Your Cloudinary API key>
-  CLOUD_API_SECRET=<Your Cloudinary API secret>
+     env
+     PORT=3000
+     MONGO_URL=<Your MongoDB connection string>
+     SESSION_SECRET=<Your session secret string>
+     CLOUD_NAME=<Your Cloudinary cloud name>
+     CLOUD_API_KEY=<Your Cloudinary API key>
+     CLOUD_API_SECRET=<Your Cloudinary API secret>
 
 4. Run the app
 
-npm start
-App will be available at http://localhost:3000.
+   npm start
+   App will be available at http://localhost:3000.
 
-✨ Usage Guide
-Register or log in.
+## ✨ Usage Guide
+   Register or log in.
+   
+   Create a new listing:
+   
+   Include title, description, price, location, and images.
+   
+   Browse, view, edit, or delete listings.
+   
+   Leave a review on any listing.
+   
+   View all your listings and reviews from your profile.
 
-Create a new listing:
+   Log out when done.
 
-Include title, description, price, location, and images.
 
-Browse, view, edit, or delete listings.
+## 🤝 Contributing
+   Fork the repo
+   
+   Create a feature branch
+   
+   Make your changes & commit
+   
+   Open a Pull Request
+   
+   Contributions are welcome and appreciated!
 
-Leave a review on any listing.
-
-View all your listings and reviews from your profile.
-
-Log out when done.
-
-🤝 Contributing
-Fork the repo
-
-Create a feature branch
-
-Make your changes & commit
-
-Open a Pull Request
-
-Contributions are welcome and appreciated!
-
-🙏 Acknowledgements
-Inspired by Airbnb’s core features.
-
-Built to practice full-stack development with Node.js, Express, MongoDB, EJS, Passport, and Cloudinary.
+## 🙏 Acknowledgements
+   Inspired by Airbnb’s core features.
+   
+   Built to practice full-stack development with Node.js, Express, MongoDB, EJS, Passport, and Cloudinary.
