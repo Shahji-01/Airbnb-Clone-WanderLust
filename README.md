@@ -7,7 +7,7 @@ A full-stack Airbnb clone named **WanderLust**, built with Node.js, Express, Mon
 ## 🚀 Live Demo
 
 Check out the running app here:  
-`https://<your-deployment-url>/listings`
+`https://airbnb-clone-8221.onrender.com/listings`
 
 ---
 
